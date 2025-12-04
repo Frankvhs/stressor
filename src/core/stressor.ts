@@ -1,35 +1,66 @@
-import { K6Adapter } from '../adapters/k6';
-import { StressorConfig } from '../types/config';
-import { RawReport } from '../types/report';
+import {
+  AuditAdapter,
+  AuditAdapterConfig,
+} from '../adapters/audit/adapter';
+import { LoadAdapter } from '../adapters/load/adapter';
+import { AdapterPipeline, PipelineOptions } from './pipeline';
+import { LoadAdapterConfig } from '../adapters/load/types/config';
+import { LoadAdapterReport } from '../adapters/load/types/report';
+import { deepMerge } from '../utils/merge';
+
+export type JobRunConfig =
+  | (LoadAdapterConfig & { type: 'load'; id: string })
+  | (AuditAdapterConfig & { type: 'audit'; id: string });
+
+export interface StressorConfig {
+  id?: string;
+  name: string;
+  owner?: string;
+  
+  jobs?: JobRunConfig[];
+  // short form for define specifics jobs
+  load?: LoadAdapterConfig;
+  audit?: AuditAdapterConfig;
+
+  options?: PipelineOptions;
+}
+
+export interface StressorReport {
+  [id:string]: LoadAdapterReport | AuditAdapterConfig
+}
 
 export class Stressor {
   config: StressorConfig;
-  k6Adapter: K6Adapter;
 
   constructor(config: StressorConfig) {
     this.config = config;
-    this.k6Adapter = new K6Adapter();
   }
 
-  async run(scenarioName: string) {
-    const scenario = this.config.scenarios[scenarioName];
+  async run(changes: Partial<StressorConfig> = {}) {
+    const current = deepMerge(this.config, changes);
+    console.log(current)
+    const jobs: JobRunConfig[] = current.jobs || [];
+    const options = current.options || {};
+    let pipeline = new AdapterPipeline();
 
-    if (!scenario) {
-      throw new Error(`Scenario ${scenarioName} not found`);
+    // short form
+    if (current.audit) {
+      jobs.push({ type: 'audit', id: '', ...current.audit });
+    }
+    if (current.load) {
+      jobs.push({ type: 'load', id: '', ...current.load });
+    }
+    
+    for (const job of jobs) {
+      pipeline = pipeline.addAdapter(
+        job.id + '_' + job.type,
+        job.type === 'load' ? new LoadAdapter() : new AuditAdapter(),
+        job
+      );
     }
 
-    const results: RawReport = {};
+    console.log(pipeline)
 
-    if (scenario.load) {
-      results.load = await this.k6Adapter.execute({
-        name: scenarioName,
-        ...scenario.load,
-      });
-    }
-    if (scenario.audit) {
-      throw new Error('Audit method not implemented');
-    }
-
-    return results;
+    return pipeline.run(current) as Promise<StressorReport>;
   }
 }

@@ -12,8 +12,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       k6-node:
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.3.3
+        version: 0.3.3
       lighthouse:
         specifier: ^13.0.1
         version: 13.0.1
@@ -769,8 +769,8 @@ packages:
     resolution: {integrity: sha512-c80Qupofp43y4cJ7+8TTDN/AsDwLi5oOm/plBrWI+iQt485vKXCco+yVmOwEgdo9VOdsYTuV0UlTeetVPTriXA==}
     engines: {node: '>=12'}
 
-  k6-node@0.3.1:
-    resolution: {integrity: sha512-IRfSWzk4kJcsOE8tLmCs5zPAuO0tywah05gl/wvEH/lGvUWW18zzwFMKtYi/Dtrea8h899UJSbAYwO9FA6Riwg==}
+  k6-node@0.3.3:
+    resolution: {integrity: sha512-kXn8gOI660n2dktijftJILpsQhT8JIE1/JIHjE5MMe/la2ql9wj2UuVqhke/9puTEgd2ANl4mr9oRSJHGvUgsA==}
     hasBin: true
 
   legacy-javascript@0.0.1:
@@ -976,8 +976,8 @@ packages:
   third-party-web@0.27.0:
     resolution: {integrity: sha512-h0JYX+dO2Zr3abCQpS6/uFjujaOjA1DyDzGQ41+oFn9VW/ARiq9g5ln7qEP9+BTzDpOMyIfsfj4OvfgXAsMUSA==}
 
-  third-party-web@0.28.0:
-    resolution: {integrity: sha512-4P798O67JmIKRJfJ1HSOkIsZrx2+FuaN2jTQX+imHXFPbGp17KSMDabYxrRT011B3gBzaoHFhUkBlEkNZN8vuQ==}
+  third-party-web@0.29.0:
+    resolution: {integrity: sha512-nBDSJw5B7Sl1YfsATG2XkW5qgUPODbJhXw++BKygi9w6O/NKS98/uY/nR/DxDq2axEjL6halHW1v+jhm/j1DBQ==}
 
   tldts-core@7.0.18:
     resolution: {integrity: sha512-jqJC13oP4FFAahv4JT/0WTDrCF9Okv7lpKtOZUGPLiAnNbACcSg8Y8T+Z9xthOmRBqi/Sob4yi0TE0miRCvF7Q==}
@@ -1441,7 +1441,7 @@ snapshots:
   '@paulirish/trace_engine@0.0.61':
     dependencies:
       legacy-javascript: 0.0.1
-      third-party-web: 0.28.0
+      third-party-web: 0.29.0
 
   '@prisma/instrumentation@6.11.1(@opentelemetry/api@1.9.0)':
     dependencies:
@@ -1867,7 +1867,7 @@ snapshots:
 
   js-library-detector@6.7.0: {}
 
-  k6-node@0.3.1:
+  k6-node@0.3.3:
     dependencies:
       tar: 7.5.2
       zip-lib: 1.1.2
@@ -2149,7 +2149,7 @@ snapshots:
 
   third-party-web@0.27.0: {}
 
-  third-party-web@0.28.0: {}
+  third-party-web@0.29.0: {}
 
   tldts-core@7.0.18: {}
 
