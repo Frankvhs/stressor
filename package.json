@@ -1,6 +1,6 @@
 {
   "name": "stressor-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simulating realistic network conditions and server load within testing environments",
   "main": "dist/core/stressor",
   "scripts": {
@@ -10,9 +10,25 @@
   "files": [
     "dist"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "stressor",
+    "load-testing",
+    "stress-testing",
+    "performance-testing",
+    "k6",
+    "lighthouse",
+    "network-simulation",
+    "server-load",
+    "latency",
+    "throttling",
+    "bandwidth",
+    "qos",
+    "testing",
+    "devtools",
+    "web-performance",
+    "automation"
+  ],
+  "author": "Rodny Estrada <rrodnyestrada1@gmail.com>",
   "dependencies": {
     "chrome-launcher": "^1.2.1",
     "k6-node": "^0.3.3",
