@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="Stressor Logo" width="300" />
+  <img src="https://github.com/rodnye/stressor/blob/main/assets/logo.png?raw=true" alt="Stressor Logo" width="300" />
  
   <div>
     <a href="https://www.npmjs.com/package/stressor-core">
