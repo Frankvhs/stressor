@@ -1,11 +1,15 @@
 {
-  "name": "stressor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "stressor-core",
+  "version": "0.0.1",
+  "description": "Simulating realistic network conditions and server load within testing environments",
+  "main": "dist/core/stressor",
   "scripts": {
-    "test": "tsx tests/tmp.ts"
+    "build": "tsc",
+    "prepublishOnly": "tsc"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
